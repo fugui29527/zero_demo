@@ -1,0 +1,12 @@
+type Request {
+	Id string `json:"id,options"`
+}
+
+type Response {
+	Name string `json:"name"`
+}
+
+service api-api {
+	@handler UserInfoHandler
+	get /user/Info(Request) returns (Response)
+}
