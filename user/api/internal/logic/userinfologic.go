@@ -23,12 +23,18 @@ func NewUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserInfo
 	}
 }
 
-func (l *UserInfoLogic) UserInfo(req *types.UserInfoRequest) (resp *types.Result, err error) {
+func (l *UserInfoLogic) UserInfo(req *types.Request) (resp *types.Response, err error) {
 	// todo: add your logic here and delete this line
-
-	return &types.Result{
-		Code: "200",
-		Data: "",
-		Msg:  "ok",
-	}, nil
+	userInfo := map[int]string{
+		1: "lilei",
+		2: "zhangshan",
+	}
+	username := "unkonw"
+	if name, ok := userInfo[req.Id]; ok {
+		username = name
+	}
+	resp = &types.Response{
+		Name: username,
+	}
+	return
 }
