@@ -1,5 +1,5 @@
 type Request {
-	Id string `json:"id,options"`
+	Id int `form:"id"`
 }
 
 type Response {
@@ -8,5 +8,5 @@ type Response {
 
 service api-api {
 	@handler UserInfoHandler
-	get /user/Info(Request) returns (Response)
+	post /user/info(Request) returns (Response)
 }

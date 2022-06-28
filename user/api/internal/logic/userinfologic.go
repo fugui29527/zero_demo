@@ -24,7 +24,6 @@ func NewUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserInfo
 }
 
 func (l *UserInfoLogic) UserInfo(req *types.Request) (resp *types.Response, err error) {
-	// todo: add your logic here and delete this line
 	userInfo := map[int]string{
 		1: "lilei",
 		2: "zhangshan",

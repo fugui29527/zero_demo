@@ -2,7 +2,7 @@
 package types
 
 type Request struct {
-	Id int `json:"id,options"`
+	Id int `form:"id"`
 }
 
 type Response struct {
