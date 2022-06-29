@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"zero_demo/user/rpc/pb"
 
 	"zero_demo/user/api/internal/svc"
 	"zero_demo/user/api/internal/types"
@@ -24,16 +25,24 @@ func NewUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserInfo
 }
 
 func (l *UserInfoLogic) UserInfo(req *types.Request) (resp *types.Response, err error) {
-	userInfo := map[int]string{
-		1: "lilei",
-		2: "zhangshan",
+	//userInfo := map[int]string{
+	//	1: "lilei",
+	//	2: "zhangshan",
+	//}
+	//username := "unkonw"
+	//if name, ok := userInfo[req.Id]; ok {
+	//	username = name
+	//}
+	//rpc调用
+	in := &pb.GetUserInfoReq{
+		Id: req.Id,
 	}
-	username := "unkonw"
-	if name, ok := userInfo[req.Id]; ok {
-		username = name
+	user, err := l.svcCtx.UserRpc.GetUser(l.ctx, in)
+	if err != nil {
+		return
 	}
 	resp = &types.Response{
-		Name: username,
+		Name: user.Name,
 	}
 	return
 }

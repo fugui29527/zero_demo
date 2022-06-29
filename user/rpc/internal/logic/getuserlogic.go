@@ -25,8 +25,8 @@ func NewGetUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserLo
 
 func (l *GetUserLogic) GetUser(in *pb.GetUserInfoReq) (*pb.GetUserInfoResp, error) {
 	userInfo := map[int64]string{
-		1: "lisi",
-		2: "zhangsan",
+		1: "lisi rpc",
+		2: "zhangsan rpc",
 	}
 	username := "unknown"
 	if name, ok := userInfo[in.Id]; ok {
